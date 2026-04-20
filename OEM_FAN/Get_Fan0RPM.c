@@ -11,11 +11,12 @@ void Get_Fan0RPM(void)
     uVar1 = 0x20e6da / (uVar1 + (uint)Fan0_TACH_LO * 0x100);
   }
   uVar2 = uVar1 & 0xffff;
-  if (((uint)DAT_00101f0e * 100 < uVar2) && (uVar2 < (uint)DAT_00101f1e * 100)) {
+  if (((uint)TACH_HI_LOW_SPEED_BOUNDARY * 100 < uVar2) &&
+     (uVar2 < (uint)TACH_HI_HIGH_SPEED_BOUNDARY * 100)) {
     iVar3 = 0;
   }
-  else if ((uVar2 <= (uint)DAT_00101f0f * 100) || (iVar3 = 1, (uint)DAT_00101f1f * 100 <= uVar2))
-  goto LAB_000491a4;
+  else if ((uVar2 <= (uint)TACH_LO_LOW_SPEED_BOUNDARY * 100) ||
+          (iVar3 = 1, (uint)TACH_LO_HIGH_SPEED_BOUNDARY * 100 <= uVar2)) goto LAB_000491a4;
   Fan0_Tolerance = **(byte **)(iVar3 * 0x10 + 0x251c8);
 LAB_000491a4:
   if (Fan0_Tolerance == 0) {
