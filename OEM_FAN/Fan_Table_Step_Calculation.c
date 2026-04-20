@@ -64,7 +64,7 @@ void Fan_Table_Step_Calculation(void)
       Pending_Fan_Step = bVar1;
     }
     Global_Final_Fan_Step = bVar1;
-    ExtremeMode_StepCalculation();
+    CustomMode_StepCalculation();
     if ((Total_Fan_Count & 1) != 0) {
       Fan1RPM_Target = **(undefined **)((uint)Global_Final_Fan_Step * 0x3c + 0x24eb4);
       Fan1_Step_Logic();
