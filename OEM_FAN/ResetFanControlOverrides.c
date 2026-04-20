@@ -1,5 +1,5 @@
 
-void ResetFanControl(undefined4 param_1)
+void ResetFanControlOverrides(undefined4 param_1)
 
 {
   undefined uVar1;
