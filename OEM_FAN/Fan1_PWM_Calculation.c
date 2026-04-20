@@ -16,7 +16,7 @@ void Fan1_PWM_Calculation(undefined4 param_1,uint param_2)
   }
   if (Fan1RPM_Target != 0) {
     iVar3 = (uint)Fan1RPM_Target * 100;
-    if ((int)(uint)Fan1_RPM_HI_FanPage < (int)(iVar3 - (uint)Static_78_Value)) {
+    if ((int)(uint)Fan1_RPM_HI_FanPage < (int)(iVar3 - (uint)Fan1_Tolerance)) {
       if (Max_PWM <= Fan1_PWM) {
         return;
       }
@@ -28,7 +28,7 @@ void Fan1_PWM_Calculation(undefined4 param_1,uint param_2)
       Fan1_Update_Timer = Fan1_Update_Timer + -1;
       return;
     }
-    if ((uint)Fan1_RPM_HI_FanPage <= (uint)Static_78_Value + iVar3) {
+    if ((uint)Fan1_RPM_HI_FanPage <= (uint)Fan1_Tolerance + iVar3) {
       return;
     }
   }
