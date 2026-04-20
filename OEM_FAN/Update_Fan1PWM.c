@@ -33,8 +33,8 @@ Increase/Decrease_Fan1PWM:
     }
     if (Fan1_RPM_Override != 0) {
       iVar2 = (uint)Fan1_RPM_Override * 100;
-      if ((uint)Fan1RPM_HI_DFD0 <= iVar2 + (uint)Static_78_Value) {
-        bVar1 = (int)(uint)Fan1RPM_HI_DFD0 < (int)(iVar2 - (uint)Static_78_Value);
+      if ((uint)Fan1_RPM_HI_FanPage <= iVar2 + (uint)Fan1_Tolerance) {
+        bVar1 = (int)(uint)Fan1_RPM_HI_FanPage < (int)(iVar2 - (uint)Fan1_Tolerance);
         goto Increase/Decrease_Fan1PWM;
       }
     }
