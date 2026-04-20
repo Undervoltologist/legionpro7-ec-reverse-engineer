@@ -20,12 +20,12 @@ void Fan0_PWM_Calculation(undefined4 param_1,uint param_2)
       if (Max_PWM <= Fan0_PWM) {
         return;
       }
-      if (Fan0_Update_Timer == '\0') {
-        Fan0_Update_Timer = **(undefined **)(param_2 * 0x3c + 0x24ec4);
+      if (Fan0_Acceleration_Timer == '\0') {
+        Fan0_Acceleration_Timer = **(undefined **)(param_2 * 0x3c + 0x24ec4);
         Fan0_PWM = Fan0_PWM + 1;
         return;
       }
-      Fan0_Update_Timer = Fan0_Update_Timer + -1;
+      Fan0_Acceleration_Timer = Fan0_Acceleration_Timer + -1;
       return;
     }
     if ((uint)Fan0_RPM_HI_FanPage <= (uint)Fan0_Tolerance + iVar3) {
@@ -33,11 +33,11 @@ void Fan0_PWM_Calculation(undefined4 param_1,uint param_2)
     }
   }
   if (Fan0_PWM != 0) {
-    if (Fan0_Update_Timer != '\0') {
-      Fan0_Update_Timer = Fan0_Update_Timer + -1;
+    if (Fan0_Acceleration_Timer != '\0') {
+      Fan0_Acceleration_Timer = Fan0_Acceleration_Timer + -1;
       return;
     }
-    Fan0_Update_Timer = **(char **)(param_2 * 0x3c + 0x24ec8);
+    Fan0_Acceleration_Timer = **(char **)(param_2 * 0x3c + 0x24ec8);
     Fan0_PWM = Fan0_PWM - 1;
   }
   return;
